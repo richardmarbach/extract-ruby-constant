@@ -1,5 +1,7 @@
 local ts = require("nvim-treesitter.ts_utils")
 
+local M = {}
+
 local function find_next_module_constant()
 	local node = ts.get_node_at_cursor()
 	while node ~= nil and not vim.tbl_contains({ "constant", "class", "module" }, node:type()) do
@@ -25,12 +27,12 @@ local function get_constant_name(node)
 end
 
 local function get_full_constant_name()
-	local names = {}
 	local node = find_next_module_constant()
 	if not node then
 		return
 	end
 
+	local names = {}
 	while node do
 		table.insert(names, get_constant_name(node))
 		node = get_parent_class_or_module(node)
@@ -40,15 +42,14 @@ local function get_full_constant_name()
 	return table.concat(names, "::")
 end
 
-function _G.get_full_constant_name()
+function M.extract()
 	return get_full_constant_name()
 end
 
-function _G.yank_full_constant_name()
+function M.yank()
 	local name = get_full_constant_name()
 	vim.fn.setreg("0", name)
 	vim.fn.setreg('"', name)
 end
 
-vim.cmd("nnoremap <leader>r :so %<cr>")
-vim.cmd("nnoremap <leader>t :lua yank_full_constant_name()<cr>")
+return M
