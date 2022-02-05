@@ -4,7 +4,12 @@ local M = {}
 
 local function find_next_module_constant()
 	local node = ts.get_node_at_cursor()
-	while node ~= nil and not vim.tbl_contains({ "constant", "class", "module" }, node:type()) do
+
+	if node:type() == "constant" and node:parent() and node:parent():type() == "assignment" then
+		return node
+	end
+
+	while node ~= nil and not vim.tbl_contains({ "class", "module" }, node:type()) do
 		node = node:parent()
 	end
 
@@ -39,7 +44,7 @@ local function get_full_constant_name()
 	end
 
 	names = vim.fn.reverse(names)
-	return table.concat(names, "::")
+	return "::" .. table.concat(names, "::")
 end
 
 function M.extract()
