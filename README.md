@@ -11,7 +11,7 @@ Extract the the ruby constant under the cursor.
 
 ### Packer
 
-`use { 'richardmarbac/extract-ruby-constant' }`
+`use { 'richardmarbach/extract-ruby-constant' }`
 
 ### Vim-Plug
 
