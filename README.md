@@ -2,7 +2,23 @@
 
 Extract the the ruby constant under the cursor.
 
+## Requirements
+
+- `neovim >= 0.5`
+- `treesitter`
+
+## Installation
+
+### Packer
+
+`use { 'richardmarbac/extract-ruby-constant' }`
+
+### Vim-Plug
+
+`Plug 'richardmarbach/extract-ruby-constant'`
+
 ## Usage
 
 `:lua require('extract-ruby-constant').extract()`
+
 `:lua require('extract-ruby-constant').yank()`
