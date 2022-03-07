@@ -44,7 +44,7 @@ local function get_full_constant_name()
 	end
 
 	names = vim.fn.reverse(names)
-	return "::" .. table.concat(names, "::")
+	return table.concat(names, "::")
 end
 
 function M.extract()
