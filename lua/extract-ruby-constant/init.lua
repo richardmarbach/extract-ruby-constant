@@ -52,9 +52,9 @@ function M.extract()
 end
 
 function M.yank()
-	local name = get_full_constant_name()
-	vim.fn.setreg("0", name)
-	vim.fn.setreg('"', name)
+	local name = M.extract()
+  vim.fn.setreg(vim.v.register, name)
+  vim.fn.setreg("0", name)
 end
 
 return M
