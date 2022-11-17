@@ -1,4 +1,4 @@
-local ts = require("nvim-treesitter.ts_utils")
+local ts = vim.treesitter.query
 
 local M = {}
 
@@ -53,8 +53,8 @@ end
 
 function M.yank()
 	local name = M.extract()
-  vim.fn.setreg(vim.v.register, name)
-  vim.fn.setreg("0", name)
+	vim.fn.setreg(vim.v.register, name)
+	vim.fn.setreg("0", name)
 end
 
 return M

@@ -4,7 +4,7 @@ Extract the the ruby constant under the cursor.
 
 ## Requirements
 
-- `neovim >= 0.5`
+- `neovim >= 0.8`
 - `treesitter`
 
 ## Installation
