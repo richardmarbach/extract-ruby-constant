@@ -1,4 +1,5 @@
-local ts = vim.treesitter
+local ts = require("nvim-treesitter.ts_utils")
+local query = vim.treesitter.query
 
 local M = {}
 
@@ -26,9 +27,9 @@ end
 
 local function get_constant_name(node)
   if node:type() == "constant" then
-    return ts.query.get_node_text(node)[1]
+    return query.get_node_text(node)[1]
   end
-  return ts.query.get_node_text(node:child(1))[1]
+  return query.get_node_text(node:child(1))[1]
 end
 
 local function get_full_constant_name()
