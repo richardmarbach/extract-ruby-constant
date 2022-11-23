@@ -27,9 +27,9 @@ end
 
 local function get_constant_name(node)
   if node:type() == "constant" then
-    return query.get_node_text(node)[1]
+    return query.get_node_text(node, 0)
   end
-  return query.get_node_text(node:child(1))[1]
+  return query.get_node_text(node:child(1), 0)
 end
 
 local function get_full_constant_name()
