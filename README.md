@@ -22,3 +22,8 @@ Extract the the ruby constant under the cursor.
 `:lua require('extract-ruby-constant').extract()`
 
 `:lua require('extract-ruby-constant').yank()`
+
+```lua
+vim.keymap.set("o", "<leader>oc", require("extract-ruby-constant").extract)
+vim.keymap.set("n", "<leader>oc", require("extract-ruby-constant").yank)
+```
