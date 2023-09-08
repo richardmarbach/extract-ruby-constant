@@ -1,6 +1,6 @@
 # extract-ruby-constant
 
-Extract the the ruby constant under the cursor.
+Extract the the ruby constant under the cursor and place it in the yank register.
 
 ## Requirements
 
