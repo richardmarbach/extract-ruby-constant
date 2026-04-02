@@ -1,9 +1,7 @@
-local ts = require("nvim-treesitter.ts_utils")
-
 local M = {}
 
 local function find_next_module_constant()
-	local node = ts.get_node_at_cursor()
+	local node = vim.treesitter.get_node()
 
 	if node:type() == "constant" and node:parent() and node:parent():type() == "assignment" then
 		return node
